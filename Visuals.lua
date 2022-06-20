@@ -1,0 +1,123 @@
+-- This script is open sourced , if you're going to use these please credit Godware123 on Github.
+
+
+-- Locals 
+
+local LocalPlayer = game.Players.LocalPlayer
+
+local RunService = game:GetService("RunService")
+
+local workspace = game:GetService("Workspace")
+
+local Light = game:GetService("Lighting")
+
+
+-- Library
+
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+
+local Window = Library.CreateLib("Da Hood Visuals!", "Ocean")
+
+local Tab = Window:NewTab("Visuals")
+local Tab2 = Window:NewTab("Extras")
+
+local Section = Tab:NewSection("World")
+local Section2 = Tab:NewSection("Chams")
+local Section3 = Tab2:NewSection("Extras")
+
+-- Sliders n Stuff
+
+Section:NewSlider("Saturation", "Change the worlds Saturation!", 50, 0, function(value)
+    Light.ColorCorrection.Saturation = value
+end)
+
+Section:NewSlider("Fog", "Change the worlds Fog!", 1000, 0, function(value)
+       game.Lighting.FogEnd = value
+end)
+
+Section:NewSlider("Brightness", "Change the worlds Brightness!", 100, 0, function(value)
+           Light.Brightness = value
+end)
+
+Section:NewSlider("Star Amount", "Change the worlds Star Amount!", 10000, 0, function(value)
+   Light.Sky.StarCount = value
+end)
+
+Section:NewColorPicker("World Color", "Change the worlds Color!", Color3.fromRGB(0,0,0), function(color)
+    Light.Ambient = color
+    Light.OutdoorAmbient = color
+end)
+
+Section2:NewToggle("Gun Chams", "ForceField Material for the item you're holding!", function(value)
+       if value then
+            local Client = game.GetService(game, "Players").LocalPlayer
+            Client.Character:FindFirstChildOfClass("Tool").Default.Material = Enum.Material.ForceField
+        else
+            local Client = game.GetService(game, "Players").LocalPlayer
+            Client.Character:FindFirstChildOfClass("Tool").Default.Material = Enum.Material.Plastic
+        end
+end)
+
+Section2:NewColorPicker("Gun Color", "Change your chams color!", Color3.fromRGB(0,0,0), function(color)
+      LocalPlayer.Character:FindFirstChildOfClass("Tool").Default.BrickColor = BrickColor.new(color)
+end)
+
+Section2:NewToggle("Body Chams", "ForceField Material for your body!", function(value)
+  if value then
+        game.Players.LocalPlayer.Character.LeftHand.Material = "ForceField"
+        game.Players.LocalPlayer.Character.RightHand.Material = "ForceField"
+        game.Players.LocalPlayer.Character.LeftLowerArm.Material = "ForceField"
+        game.Players.LocalPlayer.Character.RightLowerArm.Material = "ForceField"
+        game.Players.LocalPlayer.Character.LeftUpperArm.Material = "ForceField"
+        game.Players.LocalPlayer.Character.RightUpperArm.Material = "ForceField"
+        game.Players.LocalPlayer.Character.LeftFoot.Material = "ForceField"
+        game.Players.LocalPlayer.Character.RightFoot.Material = "ForceField"
+        game.Players.LocalPlayer.Character.LeftLowerLeg.Material = "ForceField"
+        game.Players.LocalPlayer.Character.RightLowerLeg.Material = "ForceField"
+        game.Players.LocalPlayer.Character.UpperTorso.Material = "ForceField"
+        game.Players.LocalPlayer.Character.LowerTorso.Material = "ForceField"
+        game.Players.LocalPlayer.Character.LeftUpperLeg.Material = "ForceField"
+        game.Players.LocalPlayer.Character.RightUpperLeg.Material = "ForceField"
+        game.Players.LocalPlayer.Character.Head.Material = "ForceField"
+    else
+        game.Players.LocalPlayer.Character.LeftHand.Material = "Plastic"
+        game.Players.LocalPlayer.Character.RightHand.Material = "Plastic"
+        game.Players.LocalPlayer.Character.LeftLowerArm.Material = "Plastic"
+        game.Players.LocalPlayer.Character.RightLowerArm.Material = "Plastic"
+        game.Players.LocalPlayer.Character.LeftUpperArm.Material = "Plastic"
+        game.Players.LocalPlayer.Character.RightUpperArm.Material = "Plastic"
+        game.Players.LocalPlayer.Character.LeftFoot.Material = "Plastic"
+        game.Players.LocalPlayer.Character.RightFoot.Material = "Plastic"
+        game.Players.LocalPlayer.Character.LeftLowerLeg.Material = "Plastic"
+        game.Players.LocalPlayer.Character.RightLowerLeg.Material = "Plastic"
+        game.Players.LocalPlayer.Character.UpperTorso.Material = "Plastic"
+        game.Players.LocalPlayer.Character.LowerTorso.Material = "Plastic"
+        game.Players.LocalPlayer.Character.LeftUpperLeg.Material = "Plastic"
+        game.Players.LocalPlayer.Character.RightUpperLeg.Material = "Plastic"
+        game.Players.LocalPlayer.Character.Head.Material = "Plastic"
+    end
+end)
+
+Section2:NewColorPicker("Body Color", "Change your chams color!", Color3.fromRGB(0,0,0), function(color)
+       LocalPlayer.Character.LeftHand.Color = color
+    LocalPlayer.Character.RightHand.Color = color
+    LocalPlayer.Character.LeftLowerArm.Color = color
+    LocalPlayer.Character.RightLowerArm.Color = color
+    LocalPlayer.Character.LeftUpperArm.Color = color
+    LocalPlayer.Character.RightUpperArm.Color = color
+    LocalPlayer.Character.LeftFoot.Color = color
+    LocalPlayer.Character.RightFoot.Color = color
+    LocalPlayer.Character.LeftLowerLeg.Color = color
+    LocalPlayer.Character.RightLowerLeg.Color = color
+    LocalPlayer.Character.UpperTorso.Color = color
+    LocalPlayer.Character.LowerTorso.Color = color
+    LocalPlayer.Character.LeftUpperLeg.Color = color
+    LocalPlayer.Character.RightUpperLeg.Color = color
+    LocalPlayer.Character.Head.Color = color
+end)
+
+Section3:NewKeybind("UI Toggle", "Toggle the UI!", Enum.KeyCode.V, function()
+	Library:ToggleUI()
+end)
+
+-- Finished!
